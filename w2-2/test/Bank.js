@@ -31,7 +31,7 @@ describe("Bank", function () {
           to: bank.address,
           value: ethers.utils.parseEther("5")
         })
-        expect(await bank.banlanceOf(owner.address)).to.equal(5);
+        expect(await bank.balanceOf(owner.address)).to.equal(ethers.utils.parseEther("5"));
       });
 
       it("Should withdraw all to the owner", async function () {
@@ -42,7 +42,7 @@ describe("Bank", function () {
         })
         const balance = await ethers.provider.getBalance(bank.address);
         await bank.withdrawAll();
-        expect(await ethers.provider.getBalance(bank.address)).to.eq(0);
+        expect(await ethers.provider.getBalance(bank.address)).to.equal(0);
       });
     });
   });
